@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+  <head>
+    <title>The Gossip Project</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+  </head>
+    <body class="bg-light-gray">
+        <article class="mw9 center ph3-ns">
+                <div class="pa4">
+                  <div class="overflow-auto">
+          <table class="f6 w-100 mw8 center" cellspacing="0">
+            <thead>
+                <tr>
+                  <th class="fw6 bb b--black-20 tl pb3 pr3 f3 lh-copy serif">#</th>
+                  <th class="fw6 bb b--black-20 tl pb3 pr3 f3 lh-copy serif">Author</th>
+                  <th class="fw6 bb b--black-20 tl pb3 pr3 f3 lh-copy serif">Content</th>
+                  <th class="fw6 bb b--black-20 tl pb3 pr3 f3 lh-copy serif">Created Date</th>
+                  <th class="fw6 bb b--black-20 tl pb3 pr3 f3 lh-copy serif">View</th>
+                </tr>
+            </thead>
+            <tbody class="lh-copy">
+              <% Gossip.all.sort.each_with_index do | gossip, index | %>
+                <tr>
+                  <td class="pv3 pr3 bb b--black-20 f3 lh-copy serif"><%= gossip.id %> </td>
+                  <td class="pv3 pr3 bb b--black-20 f3 lh-copy serif"><%= gossip.user.first_name %></td>
+                  <td class="pv3 pr3 bb b--black-20 f3 lh-copy serif"><%= gossip.content %></td>
+                  <td class="pv3 pr3 bb b--black-20 f3 lh-copy serif"><%= gossip.created_at %></td> 
+                  <td class="pv3 pr3 bb b--black-20 f3 lh-copy serif"><%= link_to "Details", gossip_path(gossip.id)%></td>        
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+  </body>
+</html> 

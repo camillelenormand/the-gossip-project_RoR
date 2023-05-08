@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+</head>
+<body>
+  <main class="pa4 black-80">
+    <div class="measure center tc">
+      <img src="https://i.pravatar.cc/600" class="br-100 h5 w5 dib" alt="Profile Picture">
+      <h1 class="mt3 mb1"><%= User.find_by(id: @id).first_name %> <%= User.find_by(id: @id).last_name %></h1>
+      <span class="f5 lh-copy"><%= User.find_by(id: @id).email %></span>
+      <p class="f5 lh-copy"><%= User.find_by(id: @id).description %></p>
+      <hr>
+    </div>
+  </main>
+</body>
+</html>

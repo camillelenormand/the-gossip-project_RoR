@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gossip Details</title>
+  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+</head>
+<body class="bg-light-gray">
+  <div class="pa4">
+    <div class="overflow-hidden ba br2 b--black-10 shadow-5">
+      <div class="bg-white">
+        <div class="pa3">
+          <h1 class="f2 mb2">Title: <%=Gossip.find(@id).title%></h1>
+          <p class="f4 mb2">Content: <%=Gossip.find(@id).content%></p>
+          <p class="f5 mv0">By <%=link_to Gossip.find(@id).user.first_name, user_path(Gossip.find(@id).user.id)%> | Created on <%=Gossip.find(@id).created_at%></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
