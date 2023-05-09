@@ -3,5 +3,5 @@ class Gossip < ApplicationRecord
   has_many :JoinTableGossipsTags, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  validates :title, presence: true
+  validates :title, presence: true, length: { in: 3..14 }
 end
