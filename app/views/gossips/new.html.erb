@@ -1,7 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>New Gossip</title>
-  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <title>New Gossip</title>
+  </head>
+  <body>
+    <%= form_tag url_for(action: 'create'), method: "post", class:"measure center" do %>   
+      <legend class="f4 fw6 ph0 mh0">New Gossip</legend>
+        <fieldset id="contact" class="ba b--transparent ph0 mh0">
+          <div class="mt3">
+            <label class="db fw6f6" for="title">Title</label>
+            <%= text_field_tag 'title', @gossip.title, class:'pa2 input-reset ba bg-transparent w-100 measure', required: true, min_length:3, max_length:14 %>
+          </div>
+          <div class="mt3">
+            <label class="db fw6 f6" for="content">Content</label>
+            <%= text_area_tag 'content', @gossip.content, class:'pa2 input-reset ba bg-transparent w-100 measure', required: true %>
+          </div>
+        </fieldset>
+        <div class="mt4">
+          <%= submit_tag "Create Gossip", class:"f6 link dim br3 ph3 pv2 mb2 dib white bg-black" %> 
+        </div>  
+    <% end %>
+  </body>
+</html>

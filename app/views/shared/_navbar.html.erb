@@ -1,8 +1,11 @@
-    <nav class="pa3 pa4-ns">
-        <a class="link dim black b f1 f-headline-ns tc db mb3 mb4-ns f3 lh-copy serif" href="/" title="Home">The Gossip Digest</a>
-          <div class="tc pb3">
-            <li class="link dim gray f6 f5-ns dib mr3 f3 lh-copy serif"><%=link_to 'Home', '/'%></li>
-            <li class="link dim gray f6 f5-ns dib mr3 f3 lh-copy serif"><%=link_to 'Contact', contact_path%></li>
-            <li class="link dim gray f6 f5-ns dib mr3 f3 lh-copy serif"><%=link_to 'Team', team_path%></li>
-          </div>
-      </nav>
+  <header class="bg-white black-80 tc pv4 avenir">
+    <h1 class="mt2 mb0 baskerville i fw1 f1">The Gossip Digest</h1>
+      <h2 class="mt2 mb0 f6 fw4 ttu tracked">Last Updates</h2>
+    <nav class="bt bb tc mw7 center mt4">
+      <%=link_to 'Home', '/', class:'f6 f5-l link bg-animate black-80 hover-bg-light-yellow dib pa3 ph4-l'%>
+      <%=link_to 'Team', team_path, class:'f6 f5-l link bg-animate black-80 hover-bg-light-yellow dib pa3 ph4-l'%>
+      <%=link_to 'Create a gossip', new_gossip_path, class:'f6 f5-l link bg-animate black-80 hover-bg-light-yellow dib pa3 ph4-l'%>
+      <%=link_to 'Contact', contact_path, class:'f6 f5-l link bg-animate black-80 hover-bg-light-yellow dib pa3 ph4-l'%>
+    </nav>
+  </nav>
+</header>
