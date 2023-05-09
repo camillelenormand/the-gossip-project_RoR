@@ -11,7 +11,7 @@
           <p class="f6 f5-ns lh-copy serif">
             <%=Gossip.find(@id).content%>
           </p>
-          <p class="f6 f5-ns lh-copy serif">By <%=link_to Gossip.find(@id).user.first_name, user_path(Gossip.find(@id).user.id)%> | At <%=Gossip.find(@id).city.name%> | Created on <%=Gossip.find(@id).created_at%></p>
+          <p class="f6 f5-ns lh-copy serif">By <%=link_to Gossip.find(@id).user.first_name, user_path(Gossip.find(@id).user.id)%> | At <%=Gossip.find(@id).user.city_id%> | Created on <%=Gossip.find(@id).created_at%></p>
         </div>
     </article>
 </html>

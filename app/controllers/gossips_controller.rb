@@ -18,7 +18,9 @@ class GossipsController < ApplicationController
     if @gossip.save
       redirect_to gossips_path, success: "Gossip successfully created !"
     else
-      redirect_to gossips_path, danger: "Error, gossip not created !"
+      @gossip.errors.full_messages.each do |message|
+      redirect_to new_gossip_path, danger: message
+    end
     end
   end
 end
