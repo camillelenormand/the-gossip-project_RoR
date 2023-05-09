@@ -5,16 +5,13 @@
     <title>Gossip Details</title>
   </head>
   <body>
-    <div class="pa4">
-      <div class="overflow-hidden ba br2 b--black-10 shadow-5">
-        <div class="bg-white">
-          <div class="pa3">
-            <h1 class="f2 mb2">Title: <%=Gossip.find(@id).title%></h1>
-            <p class="f4 mb2">Content: <%=Gossip.find(@id).content%></p>
-            <p class="f5 mv0">By <%=link_to Gossip.find(@id).user.first_name, user_path(Gossip.find(@id).user.id)%> | Created on <%=Gossip.find(@id).created_at%></p>
-          </div>
+    <article class="center mw5 mw6-ns br3 hidden ba b--black-10 mv4">
+      <h1 class="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3 lh-copy serif"><%=Gossip.find(@id).title%></h1>
+        <div class="pa3 bt b--black-10">
+          <p class="f6 f5-ns lh-copy serif">
+            <%=Gossip.find(@id).content%>
+          </p>
+          <p class="f6 f5-ns lh-copy serif">By <%=link_to Gossip.find(@id).user.first_name, user_path(Gossip.find(@id).user.id)%> | At <%=Gossip.find(@id).city.name%> | Created on <%=Gossip.find(@id).created_at%></p>
         </div>
-      </div>
-    </div>
-  </body>
+    </article>
 </html>
