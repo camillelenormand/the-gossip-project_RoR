@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     puts "Email: #{params[:email]}"
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Logged in successfully"
+      redirect_to root_path, success: "Logged in successfully"
     else
       flash[:alert] = "Invalid email or password"
       render :new
