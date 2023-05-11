@@ -48,4 +48,10 @@ class GossipsController < ApplicationController
     end
   end
 
+  private
+
+  def gossip_params
+    params.require(:gossip).permit(:title, :content, :user_id)
+  end
+
 end
