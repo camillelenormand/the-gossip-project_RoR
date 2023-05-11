@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   ### users ###
-  resources :users
+  resources :users, only: [:new, :create, :show]
 
   ### comments ###
   resources :comments
