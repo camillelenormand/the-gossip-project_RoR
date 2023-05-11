@@ -17,7 +17,9 @@
     <header>
       <%= render 'shared/flashes' %> 
     </header>
+    <% if logged_in? %>
       <%= render 'shared/navbar' %>
+    <%end%>
       <%= yield %>
     </body>
 </html>
