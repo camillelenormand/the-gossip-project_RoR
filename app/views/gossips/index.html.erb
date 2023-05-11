@@ -20,11 +20,13 @@
               <tbody class="lh-copy">
                 <% Gossip.all.sort.each_with_index do | gossip, index | %>
                   <tr>
-                    <td class="pv3 pr3 bb b--black-20 f5 lh-copy serif"><%= gossip.id %> </td>
+                    <td class="pv3 pr3 bb b--black-20 f5 lh-copy serif"><%= index + 1 %> </td>
                     <td class="pv3 pr3 bb b--black-20 f5 lh-copy serif"><%= gossip.user.first_name %></td>
                     <td class="pv3 pr3 bb b--black-20 f5 lh-copy serif"><%= gossip.content %></td>
                     <td class="pv3 pr3 bb b--black-20 f5 lh-copy serif"><%= gossip.created_at %></td> 
-                    <td class="pv3 pr3 bb b--black-20 f5 lh-copy serif"><%= link_to "Details", gossip_path(gossip.id)%></td>        
+                    <td class="pv3 pr3 bb b--black-20 f5 lh-copy serif"><%= link_to "Details", gossip_path(gossip.id)%></td> 
+                    <td class="pv3 pr3 bb b--black-20 f5 lh-copy serif"><%= link_to "Edit", edit_gossip_path(gossip.id) %></td>
+                    <td class="pv3 pr3 bb b--black-20 f5 lh-copy serif"><%= link_to "Delete", gossip, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td> 
                   </tr>
                 <% end %>
               </tbody>
@@ -33,4 +35,4 @@
         </div>
     </article>
   </body>
-</html> 
+</html>
