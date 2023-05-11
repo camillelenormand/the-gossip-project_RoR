@@ -9,8 +9,10 @@
     <div class="measure center tc">
       <img src="https://i.pravatar.cc/600" class="br-100 h5 w5 dib" alt="Profile Picture">
       <h1 class="mt3 mb1"><%= User.find_by(id: @id).first_name %> <%= User.find_by(id: @id).last_name %></h1>
-      <span class="f5 lh-copy"><%= User.find_by(id: @id).email %></span>
-      <p class="f5 lh-copy"><%= User.find_by(id: @id).description %></p>
+      <a class="f5 lh-copy" href = "mailto: abc@example.com"><%= User.find_by(id: @id).email %></a>
+      <p class="f5 lh-copy"><%= User.find_by(id: @id).age %> years old</p>
+      <p class="f5 lh-copy"><i><%= User.find_by(id: @id).description %></i></p>
+      <p class="f5 lh-copy"><%= link_to User.find_by(id: @id).city.name, city_path(User.find_by(id: @id).city_id) %></p>
       <hr>
     </div>
   </main>
