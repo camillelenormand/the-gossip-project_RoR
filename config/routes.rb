@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   resources :likes, only: [:new, :create, :destroy]
 
   ### sessions ###
-  resources :sessions, only: [:new, :create, :destroy]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'welcome', to: 'sessions#welcome'
+  get 'authorized', to: 'sessions#page_requires_login'
 
   ### users ###
   resources :users, only: [:new, :create, :show]
