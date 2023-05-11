@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  include SessionsHelper
+  
   def new
     @comment = Comment.new
   end

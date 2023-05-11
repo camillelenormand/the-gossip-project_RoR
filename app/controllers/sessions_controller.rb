@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
 
+  # GET /sessions/new
   def new
     @user = User.new
   end
 
+  # POST /sessions
   def create
     # find existing user
     user = User.find_by(email: params[:email])
@@ -18,8 +20,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  # delete /sessions
   def destroy
     session.delete(:user_id)
+    redirect_to new_session_path, success: "Logged out!"
   end
 
 end
