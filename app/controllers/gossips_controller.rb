@@ -1,4 +1,5 @@
 class GossipsController < ApplicationController
+  include SessionsHelper
 
   def index
     @gossip = Gossip.all
