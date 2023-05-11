@@ -10,11 +10,11 @@
         <fieldset id="gossip" class="ba b--transparent ph0 mh0">
           <div class="mt3">
             <label class="db fw6f6" for="title">Title</label>
-            <%= text_field_tag 'title', gossip.title, class:'pa2 input-reset ba bg-transparent w-100 measure', required: true, min_length:3, max_length:14 %>
+            <%= text_field_tag 'title', @gossip.title, class:'pa2 input-reset ba bg-transparent w-100 measure', required: true, min_length:3, max_length:14 %>
           </div>
           <div class="mt3">
             <label class="db fw6 f6" for="content">Content</label>
-            <%= text_area_tag 'content', gossip.content, class:'pa2 input-reset ba bg-transparent w-100 measure', required: true %>
+            <%= text_area_tag 'content', @gossip.content, class:'pa2 input-reset ba bg-transparent w-100 measure', required: true %>
           </div>
         </fieldset>
         <div class="mt4">
