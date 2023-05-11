@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   include SessionsHelper
 
+  def new
+    @user = User.new
+  end
+
 
   def show
     @id = params[:id].to_i
