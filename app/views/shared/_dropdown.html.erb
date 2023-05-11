@@ -1,0 +1,13 @@
+<% if current_user %>
+  <%= link_to "Déconnexion", destroy_user_session_path, method: :delete %>
+<% else %>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      S'inscrire / Se connecter
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <%= link_to "S'inscrire", new_user_registration_path, class: "dropdown-item" %>
+      <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item" %>
+    </div>
+  </div>
+<% end %>

@@ -1,33 +1,29 @@
 class SessionsController < ApplicationController
   skip_before_action :authorized, only: [:new, :create, :welcome]
-
+  include SessionsHelper
 
   # GET /sessions/new
   def new
     @user = User.new
   end
 
-  def login
-    
-  end
-
   # POST /sessions
   def create
-    @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password])
+    user = User.find_by(email: params[:email])
+    if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to '/welcome'
+      redirect_to root_path, notice: "Logged in successfully"
     else
-      redirect_to '/login'
+      flash[:alert] = "Invalid email or password"
+      render :new
     end
   end
 
   # delete /sessions
   def destroy
-    session.delete(:current_user_id)
-    # Clear the memoized current user
-    @_current_user = nil
-    redirect_to new_session_path, success: "Logged out!"
+    log_out
+    redirect_to '/welcome'
+
   end
 
   def page_requires_login

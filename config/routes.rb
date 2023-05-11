@@ -1,4 +1,9 @@
 Rails.application.routes.draw do  
+
+  root 'gossips#index'
+
+  ### devise ###
+  devise_for :users
   
   ### gossips ###
   resources :gossips do
@@ -11,8 +16,11 @@ Rails.application.routes.draw do
   ### sessions ###
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
+
   get 'welcome', to: 'sessions#welcome'
+  
   get 'authorized', to: 'sessions#page_requires_login'
+  delete 'logout', to: 'sessions#destroy'
 
   ### users ###
   resources :users, only: [:new, :create, :show]

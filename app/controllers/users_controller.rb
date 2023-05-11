@@ -5,25 +5,23 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-
   def show
-    @id = params[:id].to_i
+    @id = params[:id]
   end
 
   def create
-    @user = User.create(user_params)
-    session[:user_id] = @user.id
+    @user = User.new(user_params)
     if @user.save
-      redirect_to '/welcome', success: "User successfully created"
+      session[:user_id] = @user.id
+      redirect_to gossips_path, success: "User successfully created"
     else
       render 'new'
     end
   end
 
-
   private
-  def user_params
-    params.require(:user).permit(:email, :password, :username)
-  end
 
+  def user_params
+    params.require(:user).permit(:email, :password, :first_name, :last_name)
+  end
 end

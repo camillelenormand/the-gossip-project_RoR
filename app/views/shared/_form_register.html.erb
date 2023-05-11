@@ -1,28 +1,28 @@
 <main class="pa4 black-80">
-  <%= form_with(scope: :user, url: new_user_path, local: true, class:"measure center") do |f|%>
+  <%= form_with url: '/users', model: @user, method: "post" do |form| %>
     <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
       <legend class="f4 fw6 ph0 mh0">Sign up</legend>
       <div class="mt3">
-        <%= f.text_field :first_name, class:"pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100", type:"text", name:"first_name",  id:"email-address", required: true, placeholder: "First Name"%>
+        <%= form.text_field :first_name, class: "pa2 input-reset ba bg-transparent w-100", required: true, placeholder: "First Name" %>
       </div>
       <div class="mt3">
-        <%= f.text_field :last_name, class:"pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100", type:"text", name:"last_name",  id:"email-address", required: true, placeholder: "Last Name"%>
+        <%= form.text_field :last_name, class: "pa2 input-reset ba bg-transparent w-100", required: true, placeholder: "Last Name" %>
       </div>
       <div class="mt3">
-        <%= f.text_field :username, class:"pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100", type:"text", name:"username",  id:"email-address", required: true, placeholder: "Username"%>
+        <%= form.text_field :username, class: "pa2 input-reset ba bg-transparent w-100", required: true, placeholder: "Username" %>
       </div>
       <div class="mt3">
-        <%= f.email_field :email, class:"pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100", type:"email", name:"email-address",  id:"email-address", required: true, placeholder: "Email"%>
+        <%= form.email_field :email, class: "pa2 input-reset ba bg-transparent w-100", required: true, placeholder: "Email" %>
       </div>
       <div class="mv3">
-        <%= f.password_field :password, class:"b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100", type:"password", name:"password",  id:"password", required: true, minlength: 6, placeholder:"Password"%>
+        <%= form.password_field :password, class: "b pa2 input-reset ba bg-transparent w-100", required: true, minlength: 6, placeholder: "Password" %>
       </div>
       <div class="mv3">
-        <%= f.password_field :password_confirmation, class:"b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100", type:"password", name:"password",  id:"password", required: true, minlength: 6, placeholder:"Confirm Password"%>
+        <%= form.password_field :password_confirmation, class: "b pa2 input-reset ba bg-transparent w-100", required: true, minlength: 6, placeholder: "Confirm Password" %>
       </div>
     </fieldset>
     <div class="lh-copy mt3">
-       <%= f.submit 'Sign up', class:"b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" %>
+      <%= form.submit 'Sign up', class: "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" %>
     </div>
   <% end %>
 </main>

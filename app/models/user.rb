@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  
   has_secure_password
   has_many :sent_private_messages, foreign_key: "sender_id"
   has_many :recipients
@@ -30,7 +31,7 @@ class User < ApplicationRecord
 
   def get_username
     if self.username.nil? || self.username.length < 1
-    self.username = self.email.split('@')[0].lowercase
+    self.username = self.email.split('@')[0].capitalize
     end
   end
 end
