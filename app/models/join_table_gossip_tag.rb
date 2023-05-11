@@ -1,5 +1,7 @@
 class JoinTableGossipTag < ApplicationRecord
   belongs_to :gossip
   belongs_to :tag
-  validates :gossip, presence: true
+
+  validates :tag_id, presence: true
+  validates :gossip_id, presence: true
 end

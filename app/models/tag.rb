@@ -1,4 +1,5 @@
 class Tag < ApplicationRecord
-  has_many :JoinTableGossipsTags, dependent: :destroy
-  validates :title, presence: true, length: { in: 3..14 }
+  has_many :JoinTableGossipsTags
+  has_many :gossips, through: :JoinTableGossipsTag, class_name: "Gossip"
+  validates :title, presence: true
 end
