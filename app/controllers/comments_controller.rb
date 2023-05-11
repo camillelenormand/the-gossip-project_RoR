@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
 
     if @comment.save 
       redirect_to gossip_path(@comment.gossip_id), success: "Comment saved !"
+    else
+      render :new, danger: "Comment not saved !"
     end
-  else
-    render :new
   end
 
   private
