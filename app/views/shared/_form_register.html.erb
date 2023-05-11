@@ -1,7 +1,7 @@
 <main class="pa4 black-80">
   <%= form_with(scope: :user, url: new_user_path, local: true, class:"measure center") do |f|%>
     <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
-      <legend class="f4 fw6 ph0 mh0">Login</legend>
+      <legend class="f4 fw6 ph0 mh0">Sign up</legend>
       <div class="mt3">
         <%= f.text_field :first_name, class:"pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100", type:"text", name:"first_name",  id:"email-address", required: true, placeholder: "First Name"%>
       </div>
@@ -22,11 +22,7 @@
       </div>
     </fieldset>
     <div class="lh-copy mt3">
-       <%= f.submit 'Sign in', class:"b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" %>
-    </div>
-    <div class="lh-copy mt3">
-      <a href="#0" class="f6 link dim black db">Sign up</a>
-      <a href="#0" class="f6 link dim black db">Forgot your password?</a>
+       <%= f.submit 'Sign up', class:"b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" %>
     </div>
   <% end %>
 </main>
