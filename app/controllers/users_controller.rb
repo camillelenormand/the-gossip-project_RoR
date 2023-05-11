@@ -30,7 +30,8 @@ class UsersController < ApplicationController
     :city_id,
     :email,
     :password,
-    :password_confirmation
+    :password_confirmation,
+    remember_me: [:remember_me]
     )
   end
 
