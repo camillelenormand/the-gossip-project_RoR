@@ -1,16 +1,16 @@
 <main class="pa4 black-80">
-  <%= form_with(scope: :session, url: new_session_path, local: true, class:"measure center") do |f|%>
+  <%= form_with(scope: :session, url: new_session_path, method: "post", local: true, class:"measure center") do |f|%>
     <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
-      <legend class="f4 fw6 ph0 mh0">Login</legend>
+      <legend class="f4 fw6 ph0 mh0">Sign in</legend>
       <div class="mt3">
-        <%= f.email_field :email, class:"pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100", type:"email", name:"email-address",  id:"email-address", required: true, placeholder: "Email"%>
+        <%= f.email_field :email, class:"pa2 input-reset ba bg-transparent w-100", type:"email", name:"email-address",  id:"email-address", required: true, placeholder: "Email"%>
       </div>
       <div class="mv3">
-        <%= f.password_field :password, class:"b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100", type:"password", name:"password",  id:"password", required: true, minlength: 6, placeholder:"Password"%>
+        <%= f.password_field :password, class:"b pa2 input-reset ba bg-transparent w-100", type:"password", name:"password",  id:"password", required: true, minlength: 6, placeholder:"Password"%>
       </div>
     </fieldset>
     <div class="lh-copy mt3">
-       <%= f.submit 'Sign in', class:"b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" %>
+       <%= f.submit 'Sign in', class:"b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"%>
     </div>
     <div class="lh-copy mt3">
       <%= link_to "Sign up", new_user_path, class:"f6 link dim black db" %>
