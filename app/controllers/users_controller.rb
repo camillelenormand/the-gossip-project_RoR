@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  include SessionsHelper
+  skip_before_action :authorized, only: [:new, :create]
 
   def new
     @user = User.new
@@ -11,28 +11,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(
-      email: user_params[:email], 
-      password: user_params[:password],
-      password_confirmation: user_params[:password_confirmation],
-    )
+    @user = User.create(user_params)
+    session[:user_id] = @user.id
+    if @user.save
+      redirect_to '/welcome', success: "User successfully created"
+    else
+      render 'new'
+    end
   end
 
 
   private
   def user_params
-    params.require(:user).permit(
-    :username,
-    :first_name, 
-    :last_name, 
-    :age, 
-    :description, 
-    :city_id,
-    :email,
-    :password,
-    :password_confirmation,
-    remember_me: [:remember_me]
-    )
+    params.require(:user).permit(:email, :password, :username)
   end
 
 end
