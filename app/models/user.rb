@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :email, :case_sensitive => false
   validates :password, presence: true, length: { minimum: 6 }
 
+  before_save { self.email = email.downcase }
   before_update :set_full_name
   before_create :set_full_name
   before_create :get_username
