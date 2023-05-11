@@ -1,0 +1,20 @@
+<main class="pa4 black-80">
+  <%= form_with(scope: :session, url: new_session_path, local: true, class:"measure center") do |f|%>
+    <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+      <legend class="f4 fw6 ph0 mh0">Login</legend>
+      <div class="mt3">
+        <%= f.email_field :email, class:"pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100", type:"email", name:"email-address",  id:"email-address", required: true, placeholder: "Email"%>
+      </div>
+      <div class="mv3">
+        <%= f.password_field :password, class:"b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100", type:"password", name:"password",  id:"password", required: true, minlength: 6, placeholder:"Password"%>
+      </div>
+    </fieldset>
+    <div class="lh-copy mt3">
+       <%= f.submit 'Sign in', class:"b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" %>
+    </div>
+    <div class="lh-copy mt3">
+      <a href="#0" class="f6 link dim black db">Sign up</a>
+      <a href="#0" class="f6 link dim black db">Forgot your password?</a>
+    </div>
+  <% end %>
+</main>
