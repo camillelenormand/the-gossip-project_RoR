@@ -1,6 +1,6 @@
 Rails.application.routes.draw do  
 
-  root 'sessions#welcome'
+  root 'gossips#index'
 
   ### devise ###
   devise_for :users
