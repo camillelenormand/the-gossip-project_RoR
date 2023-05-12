@@ -32,7 +32,7 @@
     <!--New comment form -->
     <article class="center mw5 mw6-ns br3 hidden ba b--black-10 mv4">
       <%= form_with url: gossip_comments_path(@gossip.id), method: :post, class: "pa4 black-80" do |form| %>
-        <%= form.text_area :content, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2", placeholder: 'Leave a comment...' %>
+        <%= form.text_area :content, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2", placeholder: 'Leave a comment...',  minlength: 5 %>
         <%= form.submit 'Send', class: 'f6 link dim br2 ph3 pv2 mb2 dib white bg-dark tc', data: { turbo: false } %>
       <% end %>
     </article> 
