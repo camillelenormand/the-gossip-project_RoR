@@ -1,0 +1,7 @@
+  <article class="center mw5 mw6-ns br3 hidden ba b--black-10 mv4">
+      <%= form_with url:gossip_comment_path(@gossip, @comment), method: "patch", class: "pa4 black-80" do |form| %>
+        <%= form.text_area :content, value: @comment.content, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2",  minlength: 5 %>
+        <%= form.submit 'Save', class: 'f6 link dim br2 ph3 pv2 mb2 dib white bg-dark tc', data: { turbo: false } %>
+        <%= link_to 'Back to your gossip', gossip_path, class: 'f6 link dim br2 ph3 pv2 mb2 dib white bg-dark tc', data: { turbo: false } %>
+      <% end %>
+    </article> 

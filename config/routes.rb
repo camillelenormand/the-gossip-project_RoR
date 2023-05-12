@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   ### gossips ###
   resources :gossips do
-    resources :comments, only: [:new, :create, :destroy]
+    resources :comments
   end
 
   ## likes ##

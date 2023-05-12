@@ -26,6 +26,13 @@
               <%= comment.content %>
             </p>
           </div>
+          <div class="pa3 bt b--black-10">
+            <!-- Edit gossip link -->
+            <%= link_to "Edit", edit_gossip_comment_path(@gossip.id, comment.id) %>
+            
+            <!-- Delete gossip link -->
+            <%= link_to "Delete", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          </div>
       </article>
       <% end %>
 

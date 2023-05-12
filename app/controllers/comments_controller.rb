@@ -22,9 +22,46 @@ class CommentsController < ApplicationController
       redirect_to gossip_path(params[:gossip_id]), success: "Comment saved !"
     else
       @comment.errors.full_messages.each do |message|
-      redirect_to new_gossip_path, danger: message
+        redirect_to gossip_path(params[:gossip_id]), danger: message
       end
-      redirect_to gossip_path(params[:gossip_id]), danger: "Comment not saved !"
+    end
+  end
+
+  def edit
+    @gossip = Gossip.find(params[:gossip_id])
+    @comment = Comment.find(params[:id])
+
+      unless @comment.author == current_user
+        redirect_to gossip_path(params[:gossip_id]), danger: "You can't edit this comment !"
+      end
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+
+    unless @comment.author == current_user
+      redirect_to gossip_path(params[:gossip_id]), danger: "You can't edit this comment !"
+    end
+
+    if @comment.update(content: params[:content])
+      redirect_to gossip_path(params[:gossip_id]), success: "Comment successfully updated !"
+    else
+      render :edit
+    end
+
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+
+    unless @comment.author == current_user
+      redirect_to gossip_path(params[:gossip_id]), danger: "You can't delete this comment !"
+    end
+
+    if @comment.destroy
+      redirect_to gossip_path(params[:gossip_id]), success: "Comment successfully deleted !"
+    else
+      redirect_to gossip_path(params[:gossip_id]), danger: "Comment not deleted !"
     end
   end
   
