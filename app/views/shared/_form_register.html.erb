@@ -12,6 +12,13 @@
         <%= form.text_field :username, class: "pa2 input-reset ba bg-transparent w-100", required: true, placeholder: "Username" %>
       </div>
       <div class="mt3">
+        <%= form.number_field :age, class: "pa2 input-reset ba bg-transparent w-100", required: true, placeholder: "Age" %>
+      </div>
+      <div class="mt3">
+        <%= form.label :city_id, "City:" %><br>
+        <%= form.collection_select :city_id, City.all, :id, :name, include_blank: true, class: "pa2 input-select ba bg-transparent w-100", required: true, placeholder: "City" %>
+      </div>
+      <div class="mt3">
         <%= form.email_field :email, class: "pa2 input-reset ba bg-transparent w-100", required: true, placeholder: "Email" %>
       </div>
       <div class="mv3">
