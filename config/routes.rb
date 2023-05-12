@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   ### gossips ###
   resources :gossips do
-    resources :comments
+    resources :comments, only: [:new, :create, :destroy]
   end
 
   ## likes ##
@@ -16,11 +16,8 @@ Rails.application.routes.draw do
   ### users ###
   resources :users, only: [:new, :create, :show]
 
-  ### comments ###
-  resources :comments
-
   ### cities ###
-  resources :cities
+  resources :cities, only: [:show, :index]
 
   ## static pages ##
   get 'welcome', to: 'sessions#welcome'
