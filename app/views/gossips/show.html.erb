@@ -4,19 +4,43 @@
     <meta charset="UTF-8">
     <title>Gossip Details</title>
   </head>
-  <body>
+  <body>  
+
+    <!--Gossip card -->
     <article class="center mw5 mw6-ns br3 hidden ba b--black-10 mv4">
-      <h1 class="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3 lh-copy serif"><%=Gossip.find(@id).title%></h1>
+      <h1 class="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3 lh-copy serif"><%= @gossip.title %></h1>
         <div class="pa3 bt b--black-10">
           <p class="f6 f5-ns lh-copy serif">
-            <%=Gossip.find(@id).content%>
+            <%= @gossip.content %>
           </p>
-          <p class="f6 f5-ns lh-copy serif">By <%=link_to Gossip.find(@id).user.first_name, user_path(Gossip.find(@id).user.id)%> | At <%=Gossip.find(@id).user.city.name%> | Created on <%=Gossip.find(@id).created_at%></p>
+          <p class="f6 f5-ns lh-copy serif">By <%=link_to @gossip.user.first_name, user_path(@gossip.user_id)%> | At <%= @gossip.user.city.name%> | Created on <%= @gossip.created_at%></p>
         </div>
     </article>
-    <%= render 'comment' %>
+
+    <!-- Comment list -->
+    <% @gossip.comments.each do |comment| %>
+    <article class="center mw5 mw6-ns br3 hidden ba b--black-10 mv4">
+        <h1 class="f4 bg-light-blue br3 br--top black-100 mv0 pv2 ph3 lh-copy serif"><%= comment.author.first_name %> <%= comment.author.last_name %>'s reaction</h1>
+          <div class="pa3 bt b--black-10">
+            <p class="f6 f5-ns lh-copy serif">
+              <%= comment.content %>
+            </p>
+          </div>
+      </article>
+      <% end %>
+
+    <!--New comment form -->
+    <article class="center mw5 mw6-ns br3 hidden ba b--black-10 mv4">
+      <%= form_with url: gossip_comments_path(@gossip.id), method: :post, class: "pa4 black-80" do |form| %>
+        <%= form.text_area :content, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2", placeholder: 'Leave a comment...' %>
+        <%= form.submit 'Send', class: 'f6 link dim br2 ph3 pv2 mb2 dib white bg-dark tc', data: { turbo: false } %>
+      <% end %>
+    </article> 
+
+    <!-- Back to gossip list -->
     <div class="mt4 tc">
       <%= link_to "Back to gossips", gossips_path, class:"f6 link dim br3 ph3 pv2 mb2 dib white bg-dark" %> 
-    </div> 
+    </div>
+
   </body>
 </html>

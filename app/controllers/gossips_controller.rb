@@ -1,5 +1,6 @@
 class GossipsController < ApplicationController
   include SessionsHelper
+  include GossipsHelper
   before_action :authenticate_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -7,7 +8,8 @@ class GossipsController < ApplicationController
   end
 
   def show
-    @id = params[:id]
+    @gossip = Gossip.find(params[:id])
+    @gossips = Gossip.all
     @comments = Comment.where(gossip_id: @id)
   end
 
@@ -29,13 +31,10 @@ class GossipsController < ApplicationController
 
   def update
     @gossip = Gossip.find(params[:id])
-  
-    if @gossip.update(title: params[:title], content: params[:content], user_id: current_user.id)
-      redirect_to gossips_path, success: "Gossip successfully updated !"
+
+    if current_user.id == @gossip.user_id && @gossip.update(title: params[:title], content: params[:content], user_id: current_user.id)
+      redirect_to gossip_path(params[:id]), success: "Gossip successfully updated !"
     else
-      @gossip.errors.full_messages.each do |message|
-      redirect_to edit_gossip_path(@gossip), danger: message
-      end
       render :edit
     end
   end
