@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   include SessionsHelper
+  before_action :logged_in?
   
   def new
     @comment = Comment.new
@@ -7,11 +8,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-
+  
     if @comment.save 
       redirect_to gossip_path(@comment.gossip_id), success: "Comment saved !"
     else
-      render :new, danger: "Comment not saved !"
+      flash[:danger] = "Comment not saved !"
+      render :new
     end
   end
 

@@ -1,5 +1,6 @@
 class GossipsController < ApplicationController
   include SessionsHelper
+  before_action :logged_in?
 
   def index
     @gossip = Gossip.all

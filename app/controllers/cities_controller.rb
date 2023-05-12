@@ -1,5 +1,6 @@
 class CitiesController < ApplicationController
   include SessionsHelper
+  before_action :logged_in?
   
   def show
     @id = City.find(params[:id])

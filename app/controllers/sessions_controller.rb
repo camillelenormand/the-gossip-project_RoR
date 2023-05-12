@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
   # POST /sessions
   def create
     user = User.find_by(email: params[:email])
-    puts "Email: #{params[:email]}"
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to root_path, success: "Logged in successfully"
@@ -23,10 +22,6 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     redirect_to '/welcome'
-
-  end
-
-  def page_requires_login
 
   end
 
