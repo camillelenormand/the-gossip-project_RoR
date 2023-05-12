@@ -77,7 +77,3 @@ gem "pry", "~> 0.14.2"
 gem "bcrypt", "~> 3.1"
 
 gem "tachyons-rails", "~> 4.10"
-
-gem "bcrypt-ruby", "~> 3.1"
-
-gem "devise", "~> 4.9"
