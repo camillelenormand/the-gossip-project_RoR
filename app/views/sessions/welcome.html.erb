@@ -8,7 +8,7 @@
           <h1 class="f3">You are Logged In, <%= current_user.username %></h1>
         <% end %>
       <div class="tc-l mt4 mt5-m mt6-l ph3">
-            <%= link_to "Login", '/login', method: :get, class: "f6 no-underline grow dib v-mid bg-black white ba b--blue ph3 pv2 mb3" %>
+            <%= link_to "Login", new_session_path, method: :get, class: "f6 no-underline grow dib v-mid bg-black white ba b--blue ph3 pv2 mb3" %>
             <span class="dib v-mid ph3 white-70 mb3"></span>
             <%= link_to "Sign Up", '/users/new', method: :get, class: "f6 no-underline grow dib v-mid white ba b--white ph3 pv2 mb3" %>
       </div>

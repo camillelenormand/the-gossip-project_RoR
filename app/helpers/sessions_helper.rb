@@ -6,6 +6,13 @@ module SessionsHelper
     end
   end
 
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
+  end
+
   def log_in(user)
     session[:user_id] = user.id # store user id in session
   end
@@ -16,7 +23,6 @@ module SessionsHelper
   
   def log_out
     session.delete(:user_id) # delete user id from session
-    forget(@current_user)
     @current_user = nil # set current user to nil
   end
   

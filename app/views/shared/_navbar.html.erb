@@ -1,11 +1,11 @@
   <header class="bg-white black-80 tc pv4 avenir">
     <h1 class="mt2 mb0 baskerville i fw1 f1">The Gossip Digest</h1>
-      <h2 class="mt2 mb0 f6 fw4 ttu tracked">Last Updates for <%= current_user.full_name %></h2>
+      <h2 class="mt2 mb0 f6 fw4 ttu tracked">Welcome <%= current_user.full_name %>!</h2>
     <nav class="bt bb tc mw7 center mt4">
       <%=link_to 'Home', '/', class:'f6 f5-l link bg-animate black-80 hover-bg-light-yellow dib pa3 ph4-l'%>
       <%=link_to 'Team', team_path, class:'f6 f5-l link bg-animate black-80 hover-bg-light-yellow dib pa3 ph4-l'%>
       <%=link_to 'Create a gossip', new_gossip_path, class:'f6 f5-l link bg-animate black-80 hover-bg-light-yellow dib pa3 ph4-l'%>
       <%=link_to 'Contact', contact_path, class:'f6 f5-l link bg-animate black-80 hover-bg-light-yellow dib pa3 ph4-l'%>
-      <%= link_to("Log out", logout_path, method: :delete, data: { turbo_method: :delete }) %>      
+      <%= link_to("Log out", session_path(session.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir vous déconnecter ?" }) %>      
     </nav>
 </header>

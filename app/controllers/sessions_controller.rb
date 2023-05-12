@@ -9,9 +9,10 @@ class SessionsController < ApplicationController
   # POST /sessions
   def create
     user = User.find_by(email: params[:email])
+
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, success: "Logged in successfully"
+      redirect_to gossips_path, success: "Logged in successfully"
     else
       flash[:alert] = "Invalid email or password"
       render :new
@@ -21,8 +22,7 @@ class SessionsController < ApplicationController
   # delete /sessions
   def destroy
     log_out
-    redirect_to '/welcome'
-
+    redirect_to '/welcome', success: "Logged out successfully"
   end
 
 end

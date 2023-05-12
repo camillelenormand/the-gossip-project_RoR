@@ -1,13 +1,14 @@
 class GossipsController < ApplicationController
   include SessionsHelper
-  before_action :logged_in?
+  before_action :authenticate_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @gossip = Gossip.all
+    @gossip = Gossip.all.order(created_at: :desc)
   end
 
   def show
     @id = params[:id]
+    @comments = Comment.where(gossip_id: @id)
   end
 
   def new

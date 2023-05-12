@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to gossips_path, success: "User successfully created"
     else
-      render 'new'
+      render :new
     end
   end
 
