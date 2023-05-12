@@ -31,7 +31,7 @@
             <%= link_to "Edit", edit_gossip_comment_path(@gossip.id, comment.id) %>
             
             <!-- Delete gossip link -->
-            <%= link_to "Delete", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+            <%= link_to "Delete", gossip_comment_path(@gossip.id, comment.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
           </div>
       </article>
       <% end %>
