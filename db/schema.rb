@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_05_13_134122) do
+ActiveRecord::Schema[7.1].define(version: 2023_05_13_174744) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.string "zip_code"
-    t.datetime "created_at", null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", null: false
   end
 
@@ -95,13 +95,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_05_13_134122) do
     t.text "description"
     t.string "email"
     t.integer "age"
-    t.datetime "created_at", null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", null: false
     t.integer "city_id"
     t.string "password_digest"
     t.string "username"
     t.string "full_name"
-    t.string "remember_token"
+    t.string "remember_digest"
     t.index ["city_id"], name: "index_users_on_city_id"
   end
 

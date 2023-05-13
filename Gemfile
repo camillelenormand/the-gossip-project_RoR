@@ -77,5 +77,3 @@ gem "pry", "~> 0.14.2"
 gem "bcrypt", "~> 3.1"
 
 gem "font-awesome-rails", "~> 4.7"
-
-gem "dotenv-rails", "~> 2.8"
