@@ -7,6 +7,13 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :gossips do
+    member do
+      post 'like'
+      delete 'unlike'
+    end
+  end
+
   ## likes ##
   resources :likes, only: [:new, :create, :destroy]
 

@@ -15,6 +15,27 @@
           </p>
           <p class="f6 f5-ns lh-copy serif">By <%=link_to @gossip.user.first_name, user_path(@gossip.user_id)%> | At <%= @gossip.user.city.name%> | Created on <%= @gossip.created_at%></p>
         </div>
+
+        <!-- Like button available for authenticated users only-->
+         <% if logged_in? && !current_user.likes.exists?(likeable: @gossip) %>
+            <div class="pa3 bt b--black-10 flex justify-end">
+              <%= button_to "Like", like_gossip_path(@gossip.id), method: :post, class: "f6 link dim br2 ph3 pv2 mb1 dib white bg-dark tc" %>
+            </div>
+          <% else %>
+          <% end %>
+
+          <!-- Only liked gossips can be unliked -->
+          <% if logged_in? && current_user.likes.exists?(likeable: @gossip) %>
+            <div class="pa3 bt b--black-10 flex justify-end">
+              <%= button_to "Unlike", unlike_gossip_path(@gossip.id), method: :delete, class: "f6 link dim br2 ph3 pv2 mb1 dib white bg-dark tc" %>
+            </div> 
+          <% else %>         
+          <% end %>
+
+        <!-- Gossips count -->
+         <div class="pa3 bt b--black-10 flex justify-end">
+          <span><i>Number of likes: <%= @gossip.likes.count %></i></span>
+        </div>
     </article>
 
     <!-- Comment list -->
@@ -27,11 +48,13 @@
             </p>
           </div>
           <div class="pa3 bt b--black-10">
+          <% if logged_in? %>
             <!-- Edit gossip link -->
             <%= link_to "Edit", edit_gossip_comment_path(@gossip.id, comment.id) %>
             
             <!-- Delete gossip link -->
             <%= link_to "Delete", gossip_comment_path(@gossip.id, comment.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          <% end %>
           </div>
       </article>
       <% end %>

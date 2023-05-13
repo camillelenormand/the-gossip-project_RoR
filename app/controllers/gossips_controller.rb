@@ -10,7 +10,7 @@ class GossipsController < ApplicationController
   def show
     @gossip = Gossip.find(params[:id])
     @gossips = Gossip.all
-    @comments = Comment.where(gossip_id: @id)
+    @comments = Comment.where(gossip_id: @gossip.id)
   end
 
   def new
@@ -50,7 +50,47 @@ class GossipsController < ApplicationController
     end
   end
 
+  def like 
+    @gossip = find_gossip
+    create_like
+  end
+
+
+  def unlike
+    @gossip = find_gossip
+    destroy_like
+  end
+
+
   private
+
+  def find_gossip
+    Gossip.find(params[:id])
+  end
+
+  def create_like
+    @like = @gossip.likes.build(user: current_user)
+  
+    if @like.save
+      flash[:success] = "You liked this gossip!"
+    else
+      flash[:danger] = "You already liked this gossip!"
+    end
+  
+    redirect_to gossip_path(@gossip)
+  end
+
+  def destroy_like
+    @like = Like.where(user_id: current_user.id, likeable_id: @gossip.id)
+  
+    if @like.destroy_all
+      flash[:success] = "You unliked this gossip!"
+    else
+      flash[:danger] = "You already unliked this gossip!"
+    end
+
+    redirect_to gossip_path(@gossip)
+  end
 
   def gossip_params
     params.require(:gossip).permit(:title, :content, :user_id)
