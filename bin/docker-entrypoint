@@ -1,5 +1,5 @@
 #! /bin/bash
-bundle exec rake db:migrate
+bundle exec rake db:exists; DB_EXISTS=$?; [[ $DB_EXISTS = 1 ]] && (rails db:create db:migrate db:seed) || (rails db:migrate)
 
 if [[ $? != 0 ]]; then
   echo
