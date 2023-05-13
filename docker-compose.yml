@@ -34,6 +34,8 @@ services:
       - "3000:3000"
     networks:
       - gp-api-network
+    tty: true
+    stdin_open: true
   
   gp-pgadmin:
     image: dpage/pgadmin4
