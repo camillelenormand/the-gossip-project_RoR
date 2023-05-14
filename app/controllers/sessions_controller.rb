@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 
   # delete /sessions
   def destroy
-    log_out(user)
+    log_out
     redirect_to root_path, success: "Logged out successfully"
   end
 

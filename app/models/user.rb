@@ -20,7 +20,13 @@ class User < ApplicationRecord
   before_create :set_full_name
   before_create :get_username
 
+  def remember(remember_token)
+    remember_digest = BCrypt::Password.create(remember_token)
+    self.update_attribute(:remember_digest, remember_digest)
+  end
+
   private
+
   def set_full_name
     if self.first_name.nil? && self.last_name.nil?
       self.full_name = self.email.split('@')[0].capitalize
@@ -34,4 +40,5 @@ class User < ApplicationRecord
     self.username = self.email.split('@')[0].capitalize
     end
   end
+
 end
