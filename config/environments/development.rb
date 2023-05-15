@@ -74,4 +74,15 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 
+  config.action_mailer.perform_deliveries = true
+
+  ActionMailer::Base.smtp_settings = {
+    :user_name => 'apikey',
+    :password => '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',
+    :domain => 'gossip-project.onrender.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end

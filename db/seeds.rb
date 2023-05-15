@@ -15,7 +15,7 @@ end
 puts "Cities created!"
 
 100.times do
-  users = User.create!([{ first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, age: Faker::Number.between(from: 7, to: 77), description: Faker::Lorem.sentences(number: 1), email: Faker::Internet.email, city_id: Faker::Number.between(from: 1, to: 100) }])
+  users = User.create!([{ first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, age: Faker::Number.between(from: 7, to: 77), description: Faker::Lorem.sentences(number: 1), email: Faker::Internet.email, city_id: Faker::Number.between(from: 1, to: 100), password: Faker::Internet.password(min_length: 6) }])
 end
 
 puts "Users created!"
@@ -30,22 +30,22 @@ puts "Gossips created!"
   tags = Tag.create!([{ title: Faker::Lorem.characters(number: 10) }])
 end
 
-puts "Tags created!"
+# puts "Tags created!"
 
-100.times do
-  tags = JoinTableGossipTag.create!([{ tag_id: Faker::Number.between(from: 1, to: 100) , gossip_id: Faker::Number.between(from: 1, to: 100) }])
-end
+# 100.times do
+#   tags = JoinTableGossipTag.create!([{ tag_id: Faker::Number.between(from: 1, to: 100) , gossip_id: Faker::Number.between(from: 1, to: 100) }])
+# end
 
-puts "JoinTableGossipTag items created!"
+# puts "JoinTableGossipTag items created!"
 
-100.times do
-  table = PrivateMessage.create!([{ sender_id: Faker::Number.between(from: 1, to: 100) , content: Faker::Lorem.sentences(number: 3) }])
-end
+# 100.times do
+#   table = PrivateMessage.create!([{ sender_id: Faker::Number.between(from: 1, to: 100) , content: Faker::Lorem.sentences(number: 3) }])
+# end
 
-puts "Private Messages created!"
+# puts "Private Messages created!"
 
-100.times do
-   recipients = Recipient.create!([{ user_id: Faker::Number.between(from: 1, to: 100) , private_message_id: Faker::Number.between(from: 1, to: 100) }])
-end
+# 100.times do
+#    recipients = Recipient.create!([{ user_id: Faker::Number.between(from: 1, to: 100) , private_message_id: Faker::Number.between(from: 1, to: 100) }])
+# end
 
-puts "Recipients created!"
+# puts "Recipients created!"

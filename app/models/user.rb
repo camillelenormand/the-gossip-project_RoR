@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create:welcome_send
   
   has_secure_password
   has_many :sent_private_messages, foreign_key: "sender_id"
@@ -20,9 +21,8 @@ class User < ApplicationRecord
   before_create :set_full_name
   before_create :get_username
 
-  def remember(remember_token)
-    remember_digest = BCrypt::Password.create(remember_token)
-    self.update_attribute(:remember_digest, remember_digest)
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
   end
 
   private

@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to gossips_path, success: "User successfully created"
     else
+      flash.now[:danger] = "User creation failed"
       render :new
     end
   end
@@ -22,6 +23,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :age, :description, :city_id, :username, :password, :password_confirmation, :remember_digest)
+    params.require(:user).permit(:email, :first_name, :last_name, :age, :description, :city_id, :username, :password, :password_confirmation)
   end
 end

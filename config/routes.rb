@@ -21,17 +21,15 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   ### users ###
-  resources :users, only: [:new, :create, :show]
+  resources :users
 
   ### cities ###
   resources :cities, only: [:show, :index]
 
   ## static pages ##
-  get 'welcome', to: 'sessions#welcome'
   get '/', to: 'gossips#index'
   get 'team', to: 'static_pages#team'
   get 'contact', to: 'static_pages#contact'
-  get '/welcome/:name', to: 'welcome#show'
 
 
 end
