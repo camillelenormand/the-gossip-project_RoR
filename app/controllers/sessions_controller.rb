@@ -11,17 +11,12 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
 
     if user.present? && user.authenticate(params[:password])
-      log_in(user)
-
-      # remember user
-      remember(user)
+      session[:user_id] = user.id
       redirect_to gossips_path, success: "Logged in successfully"
-
     else
       flash[:alert] = "Invalid email or password"
       render :new
     end
-
   end
 
   # delete /sessions

@@ -1,20 +1,16 @@
 <main class="pa4 black-80">
-  <%= form_with url:sessions_path, method: :post, class:"measure center" do |form|%>
+  <%= form_with url:sessions_path, method: :post, class:"measure center" do |f|%>
     <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
       <legend class="f4 fw6 ph0 mh0">Sign in</legend>
       <div class="mt3">
-        <%= form.email_field :email, class:"pa2 input-reset ba bg-transparent w-100", name:"email",  required: true, placeholder: "Email"%>
+        <%= f.email_field :email, class:"pa2 input-reset ba bg-transparent w-100", name:"email",  required: true, placeholder: "Email"%>
       </div>
       <div class="mv3">
-        <%= form.password_field :password, class:"b pa2 input-reset ba bg-transparent w-100", type:"password", name:"password", required: true, minlength: 6, placeholder:"Password"%>
+        <%= f.password_field :password, class:"b pa2 input-reset ba bg-transparent w-100", type:"password", name:"password", required: true, minlength: 6, placeholder:"Password"%>
       </div>
-      <%= form.label :remember_token do %> 
-        <%= form.check_box :remember_token %>
-        Remember me
-      <% end %>
     </fieldset>
     <div class="lh-copy mt3">
-       <%= form.submit 'Sign in', class:"b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"%>
+       <%= f.submit 'Sign in', class:"b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"%>
     </div>
     <div class="lh-copy mt3">
       <%= link_to "Sign up", new_user_path, class:"f6 link dim black db" %>
