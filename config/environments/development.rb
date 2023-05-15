@@ -78,7 +78,7 @@ Rails.application.configure do
 
   ActionMailer::Base.smtp_settings = {
     :user_name => 'apikey',
-    :password => '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',
+    :password => ENV['SENDGRID_API_KEY'],
     :domain => 'gossip-project.onrender.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
